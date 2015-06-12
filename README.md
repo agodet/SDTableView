@@ -97,7 +97,7 @@ Then load the sections definitions and you're good to go !
 }
 ```
 
-Of course, this example is pretty basic, but the framework offers a lot of functionnalities such as editable cell, foldable sections, etc ... 
+Of course, this example is pretty basic, but the framework offers a lot of features such as editable cells, foldable sections, etc ... 
 
 A more advanced use / case is implemented in the example project.
 
