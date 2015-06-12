@@ -1,11 +1,10 @@
 # SDTableView
 Simple Definition TableView is a UITableView Framework designed for fast and advanced development. Easy to use, it provides everything basically needed when playing around UITableViews.
 
-##Cococapod
+##Cococapods
 Available for cocoapods
 
 ##Implementation
-
 First, your controller must implement at least the SDTableViewHandlerDatasource protocol
 
 > .h file
