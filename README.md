@@ -11,7 +11,7 @@ First, your controller must implement at least the SDTableViewHandlerDatasource 
 > .h file
 
 ```objective-c
-@interface TestViewController : UIViewController <SDTableViewHandlerDatasource>
+@interface YourViewController : UIViewController <SDTableViewHandlerDatasource>
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 
