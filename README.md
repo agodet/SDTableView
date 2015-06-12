@@ -36,9 +36,7 @@ Then load the sections definitions and you're good to go !
 ```objective-c
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.navigationItem.title = @"Simple TableView";
-    
+        
     self.handler = [[SDTableViewHandler alloc] init];
     self.handler.datasource = self;
     
