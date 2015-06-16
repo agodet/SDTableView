@@ -1,8 +1,3 @@
-//
-//  Created by Xavier Le Brustiec on 21/01/2014.
-//  Copyright (c) 2014 SNCF. All rights reserved.
-//
-
 #import <Foundation/Foundation.h>
 
 @interface SDSectionDefinition : NSObject

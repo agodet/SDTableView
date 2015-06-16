@@ -1,8 +1,3 @@
-//
-//  Created by Lebrustiec Xavier on 09/06/2015.
-//  Copyright (c) 2015 SNCF. All rights reserved.
-//
-
 #import "SDTableViewHandler.h"
 #import "SDSectionDefinition.h"
 #import "SDCellDefinition.h"
