@@ -17,7 +17,7 @@
 - (void)tableView:(UITableView *)tableView didUnfoldSectionAtIndex:(NSInteger)index;
 - (void)tableView:(UITableView *)tableView isCurrentlyEditing:(BOOL)currentlyEditing;
 //ScrollView
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView;
+- (void)tableViewDidScroll:(UIScrollView *)scrollView;
 
 @end
 

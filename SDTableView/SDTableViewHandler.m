@@ -405,8 +405,8 @@
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    if(self.delegate && [self.delegate respondsToSelector:@selector(scrollViewDidScroll:)]){
-        [self.delegate scrollViewDidScroll:scrollView];
+    if(self.delegate && [self.delegate respondsToSelector:@selector(tableViewDidScroll:)]){
+        [self.delegate tableViewDidScroll:scrollView];
     }
 }
 
