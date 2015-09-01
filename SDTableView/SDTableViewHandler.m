@@ -33,21 +33,31 @@
        [section.target respondsToSelector:section.headerViewMethod]){
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-        UIView *viewForSection = [section.target performSelector:section.headerViewMethod withObject:section.object withObject:[NSNumber numberWithInteger:index]];
+        UIView *headerViewForSection = [section.target performSelector:section.headerViewMethod withObject:section.object withObject:[NSNumber numberWithInteger:index]];
 #pragma clang diagnostic pop
-        if (viewForSection){
-            height += viewForSection.frame.size.height;
+        if (headerViewForSection){
+            height += headerViewForSection.frame.size.height;
         }
     }
-    if(!section.sectionFoldable || (section.sectionFoldable && !section.sectionFolded)) {
-        
-        for(SDCellDefinition *currentCellDef in section.cells){
-            if ([currentCellDef.target respondsToSelector:currentCellDef.heightMethod]){
+    
+    if(section.target &&
+       section.footerViewMethod != nil &&
+       [section.target respondsToSelector:section.footerViewMethod]){
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-                height += [[currentCellDef.target performSelector:currentCellDef.heightMethod withObject:currentCellDef.object withObject:nil] floatValue];
+        UIView *footerViewForSection = [section.target performSelector:section.footerViewMethod withObject:section.object withObject:[NSNumber numberWithInteger:index]];
 #pragma clang diagnostic pop
-            }
+        if (footerViewForSection){
+            height += footerViewForSection.frame.size.height;
+        }
+    }
+    
+    for(SDCellDefinition *currentCellDef in section.cells){
+        if ([currentCellDef.target respondsToSelector:currentCellDef.heightMethod]){
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+            height += [[currentCellDef.target performSelector:currentCellDef.heightMethod withObject:currentCellDef.object withObject:nil] floatValue];
+#pragma clang diagnostic pop
         }
     }
     return height;
@@ -100,9 +110,6 @@
         return 0;
     }
     SDSectionDefinition *sectionDef = self.sectionsArray[section];
-    if (sectionDef.sectionFoldable && sectionDef.sectionFolded){
-        return 0;
-    }
     return [sectionDef.cells count];
 }
 
