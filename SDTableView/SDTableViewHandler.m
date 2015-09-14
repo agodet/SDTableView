@@ -115,7 +115,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if ([self.sectionsArray count] <= indexPath.section
-        && [((SDSectionDefinition *)[self.sectionsArray objectAtIndex:indexPath.section]).cells count] <= indexPath.row)
+        || [((SDSectionDefinition *)[self.sectionsArray objectAtIndex:indexPath.section]).cells count] <= indexPath.row)
         return nil; //Can't handle this !!!
     
     SDCellDefinition *cellDefinition = [((SDSectionDefinition *)[self.sectionsArray objectAtIndex:indexPath.section]).cells objectAtIndex:indexPath.row];
@@ -142,7 +142,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if ([self.sectionsArray count] <= indexPath.section
-        && [((SDSectionDefinition *)[self.sectionsArray objectAtIndex:indexPath.section]).cells count] <= indexPath.row)
+        || [((SDSectionDefinition *)[self.sectionsArray objectAtIndex:indexPath.section]).cells count] <= indexPath.row)
         return 0;
     
     SDCellDefinition *cellDefinition = [((SDSectionDefinition *)[self.sectionsArray objectAtIndex:indexPath.section]).cells objectAtIndex:indexPath.row];
@@ -168,7 +168,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if ([self.sectionsArray count] <= indexPath.section
-        && [((SDSectionDefinition *)[self.sectionsArray objectAtIndex:indexPath.section]).cells count] <= indexPath.row)
+        || [((SDSectionDefinition *)[self.sectionsArray objectAtIndex:indexPath.section]).cells count] <= indexPath.row)
         return;
     
     SDCellDefinition *cellDefinition = [((SDSectionDefinition *)[self.sectionsArray objectAtIndex:indexPath.section]).cells objectAtIndex:indexPath.row];
@@ -190,7 +190,7 @@
 
 -(void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath{
     if ([self.sectionsArray count] <= indexPath.section
-        && [((SDSectionDefinition *)[self.sectionsArray objectAtIndex:indexPath.section]).cells count] <= indexPath.row)
+        || [((SDSectionDefinition *)[self.sectionsArray objectAtIndex:indexPath.section]).cells count] <= indexPath.row)
         return;
     
     SDCellDefinition *cellDefinition = [((SDSectionDefinition *)[self.sectionsArray objectAtIndex:indexPath.section]).cells objectAtIndex:indexPath.row];
@@ -292,7 +292,7 @@
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     if ([self.sectionsArray count] <= indexPath.section
-        && [((SDSectionDefinition *)[self.sectionsArray objectAtIndex:indexPath.section]).cells count] <= indexPath.row)
+        || [((SDSectionDefinition *)[self.sectionsArray objectAtIndex:indexPath.section]).cells count] <= indexPath.row)
         return NO;
     
     SDCellDefinition *cellDef = (SDCellDefinition *)[((SDSectionDefinition *)[self.sectionsArray objectAtIndex:indexPath.section]).cells objectAtIndex:indexPath.row];
@@ -303,7 +303,7 @@
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if ([self.sectionsArray count] <= indexPath.section
-        && [((SDSectionDefinition *)[self.sectionsArray objectAtIndex:indexPath.section]).cells count] <= indexPath.row)
+        || [((SDSectionDefinition *)[self.sectionsArray objectAtIndex:indexPath.section]).cells count] <= indexPath.row)
         return UITableViewCellEditingStyleNone;
     
     SDCellDefinition *cellDef = (SDCellDefinition *)[((SDSectionDefinition *)[self.sectionsArray objectAtIndex:indexPath.section]).cells objectAtIndex:indexPath.row];
@@ -313,7 +313,7 @@
 
 -(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if ([self.sectionsArray count] <= indexPath.section
-        && [((SDSectionDefinition *)[self.sectionsArray objectAtIndex:indexPath.section]).cells count] <= indexPath.row)
+        || [((SDSectionDefinition *)[self.sectionsArray objectAtIndex:indexPath.section]).cells count] <= indexPath.row)
         return;
     
     SDSectionDefinition *section = ((SDSectionDefinition *)[self.sectionsArray objectAtIndex:indexPath.section]);
@@ -354,7 +354,7 @@
 
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
     if ([self.sectionsArray count] <= indexPath.section
-        && [((SDSectionDefinition *)[self.sectionsArray objectAtIndex:indexPath.section]).cells count] <= indexPath.row)
+        || [((SDSectionDefinition *)[self.sectionsArray objectAtIndex:indexPath.section]).cells count] <= indexPath.row)
         return NO;
     
     SDCellDefinition *cellDef = (SDCellDefinition *)[((SDSectionDefinition *)[self.sectionsArray objectAtIndex:indexPath.section]).cells objectAtIndex:indexPath.row];
@@ -366,7 +366,7 @@
 
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath {
     if ([self.sectionsArray count] <= sourceIndexPath.section
-        && [((SDSectionDefinition *)[self.sectionsArray objectAtIndex:sourceIndexPath.section]).cells count] <= sourceIndexPath.row)
+        || [((SDSectionDefinition *)[self.sectionsArray objectAtIndex:sourceIndexPath.section]).cells count] <= sourceIndexPath.row)
         return;
     
     SDSectionDefinition *section = ((SDSectionDefinition *)[self.sectionsArray objectAtIndex:sourceIndexPath.section]);
@@ -401,7 +401,7 @@
 - (NSIndexPath *)tableView:(UITableView *)tableView targetIndexPathForMoveFromRowAtIndexPath:(NSIndexPath*)sourceIndexPath
        toProposedIndexPath:(NSIndexPath *)proposedDestinationIndexPath{
     if ([self.sectionsArray count] <= proposedDestinationIndexPath.section
-        && [((SDSectionDefinition *)[self.sectionsArray objectAtIndex:proposedDestinationIndexPath.section]).cells count] <= proposedDestinationIndexPath.row)
+        || [((SDSectionDefinition *)[self.sectionsArray objectAtIndex:proposedDestinationIndexPath.section]).cells count] <= proposedDestinationIndexPath.row)
         return sourceIndexPath;
     
     SDCellDefinition *cellDef = (SDCellDefinition *)[((SDSectionDefinition *)[self.sectionsArray objectAtIndex:proposedDestinationIndexPath.section]).cells objectAtIndex:proposedDestinationIndexPath.row];
