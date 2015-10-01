@@ -52,12 +52,14 @@
         }
     }
     
-    for(SDCellDefinition *currentCellDef in section.cells){
-        if ([currentCellDef.target respondsToSelector:currentCellDef.heightMethod]){
+    if(!section.sectionFoldable || (section.sectionFoldable && !section.sectionFolded)) {
+        for(SDCellDefinition *currentCellDef in section.cells){
+            if ([currentCellDef.target respondsToSelector:currentCellDef.heightMethod]){
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-            height += [[currentCellDef.target performSelector:currentCellDef.heightMethod withObject:currentCellDef.object withObject:nil] floatValue];
+                height += [[currentCellDef.target performSelector:currentCellDef.heightMethod withObject:currentCellDef.object withObject:nil] floatValue];
 #pragma clang diagnostic pop
+            }
         }
     }
     return height;
@@ -110,6 +112,9 @@
         return 0;
     }
     SDSectionDefinition *sectionDef = self.sectionsArray[section];
+    if (sectionDef.sectionFoldable && sectionDef.sectionFolded){
+        return 0;
+    }
     return [sectionDef.cells count];
 }
 
