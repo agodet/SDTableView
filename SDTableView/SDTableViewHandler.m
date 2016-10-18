@@ -334,10 +334,15 @@
                 [self.sectionsArray removeObjectAtIndex:indexPath.section];
             }
             
-            [tableView beginUpdates];
             [self reloadDefinitions];
-            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-            [tableView endUpdates];
+            
+            if ([((SDSectionDefinition *)[self.sectionsArray objectAtIndex:indexPath.section]).cells count] < [section.cells count]){
+                [tableView beginUpdates];
+                [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+                [tableView endUpdates];
+            }else{
+                [tableView reloadData];
+            }
             
 #pragma clang diagnostic pop
         }
