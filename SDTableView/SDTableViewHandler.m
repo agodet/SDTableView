@@ -336,13 +336,13 @@
             
             [self reloadDefinitions];
             
+            [tableView beginUpdates];
             if ([((SDSectionDefinition *)[self.sectionsArray objectAtIndex:indexPath.section]).cells count] < [section.cells count]){
-                [tableView beginUpdates];
                 [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-                [tableView endUpdates];
             }else{
-                [tableView reloadData];
+                [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
             }
+            [tableView endUpdates];
             
 #pragma clang diagnostic pop
         }
