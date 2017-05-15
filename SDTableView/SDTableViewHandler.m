@@ -336,13 +336,20 @@
             
             [self reloadDefinitions];
             
-            [tableView beginUpdates];
-            if ([((SDSectionDefinition *)[self.sectionsArray objectAtIndex:indexPath.section]).cells count] < [section.cells count]){
-                [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-            }else{
-                [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            NSInteger difference = [section.cells count] - [((SDSectionDefinition *)[self.sectionsArray objectAtIndex:indexPath.section]).cells count];
+            if (difference <= 1) {
+                [tableView beginUpdates];
+                if (difference == 1){
+                    [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+                }
+                else if (difference == 0){
+                    [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+                }
+                [tableView endUpdates];
             }
-            [tableView endUpdates];
+            else {
+                [tableView reloadData];
+            }
             
 #pragma clang diagnostic pop
         }
