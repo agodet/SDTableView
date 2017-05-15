@@ -337,14 +337,14 @@
             [self reloadDefinitions];
             
             NSInteger difference = [section.cells count] - [((SDSectionDefinition *)[self.sectionsArray objectAtIndex:indexPath.section]).cells count];
-            if (difference <= 1) {
+            if (difference == 1){
                 [tableView beginUpdates];
-                if (difference == 1){
-                    [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-                }
-                else if (difference == 0){
-                    [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-                }
+                [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+                [tableView endUpdates];
+            }
+            else if (difference == 0){
+                [tableView beginUpdates];
+                [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
                 [tableView endUpdates];
             }
             else {
