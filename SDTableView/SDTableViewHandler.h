@@ -26,8 +26,8 @@
 
 @interface SDTableViewHandler : NSObject <UITableViewDataSource, UITableViewDelegate>
 
-@property (nonatomic, assign) id<SDTableViewHandlerDatasource> datasource;
-@property (nonatomic, assign) id<SDTableViewHandlerDelegate> delegate;
+@property (nonatomic, weak) id<SDTableViewHandlerDatasource> datasource;
+@property (nonatomic, weak) id<SDTableViewHandlerDelegate> delegate;
 
 - (float)heightForSectionAtIndex:(NSInteger)index;
 - (void)reloadDefinitions;
