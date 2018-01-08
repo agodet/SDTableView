@@ -16,6 +16,7 @@
 - (void)tableView:(UITableView *)tableView didFoldSectionAtIndex:(NSInteger)index;
 - (void)tableView:(UITableView *)tableView didUnfoldSectionAtIndex:(NSInteger)index;
 - (void)tableView:(UITableView *)tableView isCurrentlyEditing:(BOOL)currentlyEditing;
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath;
 //ScrollView
 - (void)tableViewDidScroll:(UIScrollView *)scrollView;
 
@@ -25,8 +26,8 @@
 
 @interface SDTableViewHandler : NSObject <UITableViewDataSource, UITableViewDelegate>
 
-@property (nonatomic, assign) id<SDTableViewHandlerDatasource> datasource;
-@property (nonatomic, assign) id<SDTableViewHandlerDelegate> delegate;
+@property (nonatomic, weak) id<SDTableViewHandlerDatasource> datasource;
+@property (nonatomic, weak) id<SDTableViewHandlerDelegate> delegate;
 
 - (float)heightForSectionAtIndex:(NSInteger)index;
 - (void)reloadDefinitions;
